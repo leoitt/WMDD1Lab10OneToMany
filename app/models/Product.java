@@ -18,6 +18,9 @@ public class Product extends Model {
     @Constraints.Required
     private String name;
 
+    @ManyToOne
+    private Category category;
+
     @Constraints.Required
     private String description;
 
@@ -33,9 +36,10 @@ public class Product extends Model {
     }
 
     // Constructor to initialise object
-    public Product( Long id,String name,String description,int stock,double price){
+    public Product( Long id,String name,Category category, String description,int stock,double price){
         this.id= id;
         this.name = name;
+        this.category = category;
         this.description = description;
         this.stock = stock;
         this.price = price;
@@ -60,6 +64,12 @@ public class Product extends Model {
     }
     public void setName(String name){
         this.name = name;
+    }
+    public Category getCategory(){
+        return category;
+    }
+    public void setCategory(Category category){
+        this.category = category;
     }
     public String getDescription(){
         return this.description;
